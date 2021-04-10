@@ -1,2 +1,2 @@
 insert into User(username, password)
-values ('test', 'test')
+values ('test', 'test');
