@@ -1,14 +1,14 @@
 
 create table User(
     id int auto_increment not null,
-    username varchar(75) not null,
+    username varchar(75) not null unique ,
     password text not null,
     primary key (id)
 );
 
 create table Room(
     id int auto_increment not null primary key,
-    name varchar(75) not null
+    name varchar(75) not null unique
 );
 
 create table RoomUser(

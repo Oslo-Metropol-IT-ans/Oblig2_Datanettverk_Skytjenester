@@ -9,19 +9,21 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/message")
 public class MessageController {
     @Autowired
     private MessageService messageService;
 
-    @GetMapping
-    public ResponseEntity<List<Message>> getMessage(int roomId){
+    @GetMapping("/en/{roomId}")
+    public ResponseEntity<List<Message>> getMessage(@PathVariable("roomId") int roomId){
+        System.out.println(roomId);
         List<Message> list = messageService.messages(roomId);
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
 
-    @GetMapping
+    @GetMapping("/to")
     public ResponseEntity<List<Message>> getMessageRoomAndUser (int roomId, int userId){
         List<Message> list = messageService.messagesByUserAndRoom(roomId, userId);
         return new ResponseEntity<>(list, HttpStatus.OK);

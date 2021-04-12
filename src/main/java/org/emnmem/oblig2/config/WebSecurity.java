@@ -24,11 +24,13 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .csrf().disable()
+                .cors().disable()
                 .authorizeRequests()
                 .antMatchers("/login", "/logout").permitAll()
+                .antMatchers("/api/user/**", "/api/users/addOne").permitAll()
                 .antMatchers("/h2-console/**").permitAll()
-                .anyRequest().authenticated()
-                .and().formLogin();
+                .anyRequest().permitAll();
+                //.and().formLogin();
 
     }
 

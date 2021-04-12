@@ -19,7 +19,7 @@ public class UserService {
     UserRepository userRepository;
 
     public User addOne(UserDto user) {
-        String password = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt(15));
+        String password = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt(4));
         User setUser = new User();
         setUser.setUsername(user.getUsername());
         setUser.setPassword(password);

@@ -2,8 +2,7 @@ package org.emnmem.oblig2.dto;
 
 import lombok.*;
 
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserDto {

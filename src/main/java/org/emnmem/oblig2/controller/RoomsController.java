@@ -1,5 +1,6 @@
 package org.emnmem.oblig2.controller;
 
+import org.emnmem.oblig2.dto.UserIdDto;
 import org.emnmem.oblig2.model.Room;
 import org.emnmem.oblig2.service.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/rooms")
 public class RoomsController {
