@@ -21,10 +21,10 @@ const App = () => {
         <Route path="/login" exact>
           <Login />
         </Route>
-        <Route path="/rooms/:id">
+        <Route path="/#/rooms" exact>
           <Rooms />
         </Route>
-        <Route path="/room/:id/:userId">
+        <Route path="/room/:id/:userId" exact>
           <Room />
         </Route>
       </div>

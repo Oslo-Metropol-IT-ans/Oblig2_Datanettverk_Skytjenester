@@ -14,7 +14,7 @@ const Room = (props) => {
     }, [])
 
     const update = async ()  => {
-        fetch(`http://localhost:8080/api/message/en/${id}`,{
+        fetch(`/api/message/en/${id}`,{
         headers: {
             'Content-Type': 'application/json'
         },
@@ -32,7 +32,7 @@ const Room = (props) => {
             message: document.getElementById("message").value
         }
 
-        fetch(`http://localhost:8080/api/message`,{
+        fetch(`/api/message`,{
         headers: {
             'Content-Type': 'application/json'
         },
@@ -53,7 +53,7 @@ const Room = (props) => {
                 })}
             </div>
             <div>
-                <input name="text" id="message" type="text" placeholder="message"></input>
+                <input name="text" id="message" type="text" placeholder="message"/>
                 <button type="button" onClick={send}>-</button>
             </div>
             

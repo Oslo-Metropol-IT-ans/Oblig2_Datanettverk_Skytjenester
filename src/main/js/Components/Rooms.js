@@ -16,7 +16,7 @@ const Rooms = () => {
 
     const receive = () => {
 
-        fetch("http://localhost:8080/api/rooms/getAll", {
+        fetch("/api/rooms/getAll", {
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -36,7 +36,7 @@ const Rooms = () => {
             name: document.getElementById("name").value
         }
 
-        fetch("http://localhost:8080/api/rooms/addOne", {
+        fetch("/api/rooms/addOne", {
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -52,7 +52,7 @@ const Rooms = () => {
     return (
         <div className="Rooms">
             <div>
-                <input type="text" id="name" name="name" placeholder="Room name"></input>
+                <input type="text" id="name" name="name" placeholder="Room name"/>
                 <button type="button" onClick={addRoom}>Register</button>
             </div>
             <div>

@@ -1,5 +1,6 @@
 package org.emnmem.oblig2.controller;
 
+import org.emnmem.oblig2.dto.MessageDto;
 import org.emnmem.oblig2.model.Message;
 import org.emnmem.oblig2.service.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,12 @@ public class MessageController {
     public ResponseEntity<List<Message>> getMessage(@PathVariable("roomId") int roomId){
         System.out.println(roomId);
         List<Message> list = messageService.messages(roomId);
+        return new ResponseEntity<>(list, HttpStatus.OK);
+    }
+
+    @GetMapping("/fire/{roomId}")
+    public ResponseEntity<List<MessageDto>> getMessages(@PathVariable("roomId") int roomId){
+        List<MessageDto> list = messageService.messageDtosList(roomId);
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
 

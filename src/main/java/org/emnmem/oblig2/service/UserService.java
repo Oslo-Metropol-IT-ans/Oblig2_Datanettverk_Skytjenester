@@ -40,6 +40,16 @@ public class UserService {
         }
     }
 
+    public Optional<User> getByUsername(User user) {
+        return userRepository.findAll()
+            .stream()
+            .filter(user1 -> (user.getUsername().equals(user1.getUsername()) &&
+                        BCrypt.checkpw(user.getPassword(), user1.getPassword()))).findFirst();
+
+
+
+    }
+
     public User deleteById(String id) {
         User result = getById(id);
         userRepository.deleteById(Integer.parseInt(id));

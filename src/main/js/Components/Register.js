@@ -9,7 +9,7 @@ const Register = () => {
             password : document.getElementById("password").value
         }
 
-        fetch("http://localhost:8080/api/users/addOne", {
+        fetch("/api/users/addOne", {
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -18,7 +18,8 @@ const Register = () => {
         }).then((response) => {
             response.json().then(data => {
                 console.log(data)
-                window.location.replace("/rooms/" + data.id)
+                localStorage.setItem("id",data.id)
+                window.location.replace("/rooms/")
             })
         })
     }
@@ -26,9 +27,9 @@ const Register = () => {
     return(
         <div className="Register">
             <h2>Register new user</h2>
-            <input name="username" id="username" type="text" placeholder="username"></input>
-            <input name="password" id="password" type="password" placeholder="password"></input>
-            <button type="button" onClick={register}>Registrer</button>
+            <input name="username" id="username" type="text" placeholder="username"/>
+            <input name="password" id="password" type="password" placeholder="password"/>
+            <button type="button" onClick={register}>Register</button>
         </div>
     )
 }

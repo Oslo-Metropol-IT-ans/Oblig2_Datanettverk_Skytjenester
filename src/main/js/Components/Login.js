@@ -5,9 +5,9 @@ const Login = () => {
     return (
         <div className="Login">
             <h2>Log in</h2>
-            <form action="http://localhost:8080/login" type="post">
-                <input name="username" type="text" placeholder="Username"></input>
-                <input name="password" type="password" placeholder="Password"></input>
+            <form action="http://localhost:8080/login" method="post">
+                <input name="username" type="text" placeholder="Username"/>
+                <input name="password" type="password" placeholder="Password"/>
                 <button type="submit">Logg inn</button>
             </form>
         </div>

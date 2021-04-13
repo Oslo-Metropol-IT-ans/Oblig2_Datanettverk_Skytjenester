@@ -31,6 +31,14 @@ public class UsersController {
         return new ResponseEntity<>(userResponse, HttpStatus.OK);
     }
 
+    @PostMapping("/getByUser")
+    public ResponseEntity<User> getByUsername(@RequestBody User user) {
+        var userOut = userService.getByUsername(user);
+        return userOut.map(value -> new ResponseEntity<>(value, HttpStatus.OK)).orElseGet(()
+                -> new ResponseEntity<>(null, HttpStatus.BAD_REQUEST));
+
+    }
+
     @GetMapping("/getAll")
     public ResponseEntity<List<User>> getAll() {
         return new ResponseEntity<>(userService.getAll(), HttpStatus.OK);

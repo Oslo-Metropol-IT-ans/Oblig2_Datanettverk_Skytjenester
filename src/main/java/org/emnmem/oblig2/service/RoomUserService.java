@@ -38,7 +38,7 @@ public class RoomUserService {
         for (RoomUser user : result) {
             if (String.valueOf(user.getRoomUserId().getRoom_id()).equals(id)) {
                 try {
-                    Optional<User> add = userRepository.findById(Integer.parseInt(id));
+                    Optional<User> add = userRepository.findById(user.getRoomUserId().getUser_id());
                     add.ifPresent(userList::add);
                 } catch (Exception ignored) {}
 
@@ -53,6 +53,7 @@ public class RoomUserService {
             Optional<Room> room = roomRepository.findById(Integer.parseInt(id));
             if (user.isPresent() && room.isPresent()) {
                 roomUserRepository.save(new RoomUser(new RoomUserId(room.get().getId(), user.get().getId())));
+                logger.info("true");
                 return true;
             }
             return false;

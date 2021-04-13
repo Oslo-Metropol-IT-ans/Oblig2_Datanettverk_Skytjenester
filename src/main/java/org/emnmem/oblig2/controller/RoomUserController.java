@@ -24,6 +24,7 @@ public class RoomUserController {
 
     @GetMapping
     public ResponseEntity<List<User>> getAllUsers(@PathVariable("room_id") String id){
+        logger.info(id);
         var response = roomUserService.getAll(id);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }

@@ -28,3 +28,7 @@ create table Message(
     constraint messageUserFK foreign key (user_id) references User(id) on update cascade
 );
 
+create view MessageView AS
+    select username, message.id, room_id, user_id, message from User, Message
+    where User.id = message.user_id;
+
