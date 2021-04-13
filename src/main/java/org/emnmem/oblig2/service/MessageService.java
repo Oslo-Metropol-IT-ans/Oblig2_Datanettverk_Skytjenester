@@ -1,5 +1,7 @@
 package org.emnmem.oblig2.service;
 
+import org.emnmem.oblig2.ClitenBot;
+import org.emnmem.oblig2.Server;
 import org.emnmem.oblig2.dto.MessageDto;
 import org.emnmem.oblig2.model.Message;
 import org.emnmem.oblig2.model.User;
@@ -10,6 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -25,6 +30,9 @@ public class MessageService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private ClitenBot clitenBot;
 
     public List<Message> messages(int roomId){
         return messageRepository.findAll()
@@ -53,6 +61,27 @@ public class MessageService {
     }
 
     public Message sendMessage(Message message){
-        return messageRepository.save(message);
+        var response = messageRepository.save(message);
+        /*Server.socketIntegerMap.forEach((socket, integer) -> {
+            System.out.println(socket);
+            if (integer == message.getRoom_id()) {
+                try {
+                    OutputStream os = socket.getOutputStream();
+                    PrintWriter pw = new PrintWriter(os, true);
+                    System.out.println(socket + ":" + true);
+                    pw.println(true);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+         */
+
+        clitenBot.svar(message);
+        return response;
+    }
+
+    public void sendMessageBot(Message message) {
+        messageRepository.save(message);
     }
 }

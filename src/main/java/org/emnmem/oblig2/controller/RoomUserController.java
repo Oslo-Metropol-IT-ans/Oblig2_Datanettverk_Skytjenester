@@ -24,14 +24,13 @@ public class RoomUserController {
 
     @GetMapping
     public ResponseEntity<List<User>> getAllUsers(@PathVariable("room_id") String id){
-        logger.info(id);
         var response = roomUserService.getAll(id);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @PostMapping
     public ResponseEntity<String> addUser(@PathVariable("room_id") String id, @RequestBody RoomUserDto userId) {
-        logger.info("id: " + id + " user_id: " + userId.getUserId());
+        logger.info("room id: " + id + " added user_id: " + userId.getUserId());
         return roomUserService.addOne(id, userId.getUserId()) ?
                 new ResponseEntity<>("User added to room", HttpStatus.OK) :
                 new ResponseEntity<>("User or room not found", HttpStatus.BAD_REQUEST);

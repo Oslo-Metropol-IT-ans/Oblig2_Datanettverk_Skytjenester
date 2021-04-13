@@ -53,7 +53,6 @@ public class RoomUserService {
             Optional<Room> room = roomRepository.findById(Integer.parseInt(id));
             if (user.isPresent() && room.isPresent()) {
                 roomUserRepository.save(new RoomUser(new RoomUserId(room.get().getId(), user.get().getId())));
-                logger.info("true");
                 return true;
             }
             return false;

@@ -1,5 +1,6 @@
 package org.emnmem.oblig2;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -8,38 +9,23 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.stream.Collectors;
 
 @SpringBootApplication
 public class Oblig2Application {
 
     public static void main(String[] args) {
         Server server = new Server();
-        server.start();
+        //server.start();
 
         SpringApplication.run(Oblig2Application.class, args);
     }
 
+
 }
 
-class Server extends Thread{
-
-    @Override
-    public void run() {
-        Map<Socket, Integer> socketIntegerMap = new HashMap<>();
-
-        try (ServerSocket server = new ServerSocket(8081)) {
-            System.out.println("Server running on port 8081");
-            Socket socket = server.accept();
-            InputStream is = socket.getInputStream();
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(is));
-
-            var lines = bufferedReader.lines();
-            lines.forEach(System.out::println);
-
-        } catch (Exception e) {
-
-        }
-    }
-}
