@@ -60,6 +60,15 @@ public class MessageService {
         return returnList;
     }
 
+    public List<MessageDto> messageDtosUpdate(List<Message> listIn, int roomId) throws InterruptedException {
+        System.out.println(Thread.currentThread().getId());
+        while (listIn.equals(messages(roomId))) {
+            Thread.sleep(1000);
+        }
+        System.out.println("change");
+        return messageDtosList(roomId);
+    }
+
     public Message sendMessage(Message message){
         var response = messageRepository.save(message);
         /*Server.socketIntegerMap.forEach((socket, integer) -> {
