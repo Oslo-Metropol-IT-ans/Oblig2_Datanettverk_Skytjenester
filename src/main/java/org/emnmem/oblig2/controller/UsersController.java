@@ -27,6 +27,9 @@ public class UsersController {
     @PostMapping("/addOne")
     public ResponseEntity<User> addUser(@RequestBody UserDto user) {
         logger.info(user.toString());
+        if (user.getUsername().equals("") || user.getPassword().equals("")){
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
         User userResponse = userService.addOne(user);
         return new ResponseEntity<>(userResponse, HttpStatus.OK);
     }
