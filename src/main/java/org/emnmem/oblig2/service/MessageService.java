@@ -1,7 +1,6 @@
 package org.emnmem.oblig2.service;
 
-import org.emnmem.oblig2.ClitenBot;
-import org.emnmem.oblig2.Server;
+import org.emnmem.oblig2.ClientBot;
 import org.emnmem.oblig2.dto.MessageDto;
 import org.emnmem.oblig2.model.Message;
 import org.emnmem.oblig2.model.User;
@@ -12,9 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -32,7 +28,7 @@ public class MessageService {
     private UserRepository userRepository;
 
     @Autowired
-    private ClitenBot clitenBot;
+    private ClientBot clitenBot;
 
     public List<Message> messages(int roomId){
         return messageRepository.findAll()
@@ -91,6 +87,7 @@ public class MessageService {
     }
 
     public void sendMessageBot(Message message) {
-        messageRepository.save(message);
+        if (message.getMessage() != null)
+            messageRepository.save(message);
     }
 }
