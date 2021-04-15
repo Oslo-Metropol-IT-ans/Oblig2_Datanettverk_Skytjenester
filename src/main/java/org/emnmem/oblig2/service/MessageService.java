@@ -7,6 +7,7 @@ import org.emnmem.oblig2.model.User;
 import org.emnmem.oblig2.repository.MessageRepository;
 import org.emnmem.oblig2.repository.OtherRepository;
 import org.emnmem.oblig2.repository.UserRepository;
+import org.emnmem.oblig2.websocket.WebsocketController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -29,6 +30,9 @@ public class MessageService {
 
     @Autowired
     private ClientBot clitenBot;
+
+    @Autowired
+    private WebsocketController websocketController;
 
     public List<Message> messages(int roomId){
         return messageRepository.findAll()
@@ -67,20 +71,6 @@ public class MessageService {
 
     public Message sendMessage(Message message){
         var response = messageRepository.save(message);
-        /*Server.socketIntegerMap.forEach((socket, integer) -> {
-            System.out.println(socket);
-            if (integer == message.getRoom_id()) {
-                try {
-                    OutputStream os = socket.getOutputStream();
-                    PrintWriter pw = new PrintWriter(os, true);
-                    System.out.println(socket + ":" + true);
-                    pw.println(true);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-         */
 
         clitenBot.svar(message);
         return response;

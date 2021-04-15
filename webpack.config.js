@@ -1,7 +1,7 @@
 var path = require('path');
 
 module.exports = {
-    entry: './src/main/js/index.js',
+    entry: './src/oblig-2/src/index.js',
     devtool: 'sourcemaps',
     cache: true,
     mode: 'development',
@@ -22,7 +22,7 @@ module.exports = {
                         presets: ["@babel/preset-env",    "@babel/preset-react",
                             {'plugins': ['@babel/plugin-proposal-class-properties']
                             }
-                            ],
+                        ],
                     }
                 }]
             },
@@ -30,6 +30,6 @@ module.exports = {
                 test: /\.css$/,
                 use: ['style-loader', 'css-loader']
             }
-            ]
+        ]
     }
 };
