@@ -1,0 +1,183 @@
+* {
+  padding: 0;
+  margin: 0;
+  background-color:#ffacc7;
+  color: #236e96;
+}
+
+.App {
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.Frontpage {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 20vh;
+  min-width: 30vw;
+}
+
+.Login, .Register {
+  min-height: 50vh;
+  min-width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+}
+
+form {
+  height: 100px;
+  width:300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+input, button {
+  text-align: center;
+  width: 200px;
+  font-size:20px;
+  height: 30px;
+  background-color: #15b2d3;
+  color: white;
+  border: white 1px solid;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+
+
+button:hover {
+  border: 2px solid;
+}
+
+button {
+  font-weight: bold;
+}
+
+::placeholder {
+  color: white;
+  font-style: italic;
+}
+
+.Register div {
+  min-width: 30vw;
+  min-height: 1vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.Login div {
+  min-width: 30vw;
+  min-height: 1vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.Rooms {
+  min-width: 100vw;
+  min-height:100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.Rooms div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  min-height: 20vh;
+}
+
+.MessageBox {
+  max-width: 600px;
+  border: 1px solid #ffd700;
+  height: 70vh;
+  display: flex;
+  overflow-y: scroll;
+  border-radius: 5px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.MessageBox p {
+  margin: 2px;
+  padding: 2px;
+}
+
+.green {
+  display: block;
+  float: right;
+  background-color:#ffd700;
+  color: #236196;
+  border-radius: 5px;
+  max-width: 70%;
+}
+.right, .left {
+  width: 100%;
+}
+
+.white {
+  display: block;
+  float: left;
+  background-color:gainsboro;
+  color: #000;
+  border-radius: 5px;
+  max-width: 65%;
+}
+
+.green, .white {
+  overflow-wrap: break-word;
+}
+
+.rightUsername {
+  display: none;
+  float: right;
+  font-size: small;
+  font-style: italic;
+}
+
+.leftUsername {
+  display: block;
+  float: left;
+  font-size: small;
+  font-style: italic;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  visibility: visible;
+}
+
+a {
+  text-decoration: none!important;
+}
+
+li {
+  color: purple;
+  font-size: 18px;
+}
