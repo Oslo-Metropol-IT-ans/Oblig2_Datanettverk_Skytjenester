@@ -5,7 +5,6 @@ import org.emnmem.oblig2.dto.MessageDto;
 import org.emnmem.oblig2.model.Message;
 import org.emnmem.oblig2.model.User;
 import org.emnmem.oblig2.repository.MessageRepository;
-import org.emnmem.oblig2.repository.OtherRepository;
 import org.emnmem.oblig2.repository.UserRepository;
 import org.emnmem.oblig2.websocket.WebsocketController;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -20,8 +20,6 @@ import java.util.stream.Collectors;
 public class Oblig2Application {
 
     public static void main(String[] args) {
-        Server server = new Server();
-        //server.start();
 
         SpringApplication.run(Oblig2Application.class, args);
     }
