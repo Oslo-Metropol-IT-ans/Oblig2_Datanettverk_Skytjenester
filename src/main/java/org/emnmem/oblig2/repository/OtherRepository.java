@@ -16,7 +16,7 @@ public class OtherRepository {
     private JdbcTemplate jdbcTemplate;
 
     public List<MessageDto> getAllMessages() {
-        String sql = "select * from MessageView";
+        String sql = "select * from Room";
         return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(MessageDto.class));
     }
 }
