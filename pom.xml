@@ -137,7 +137,7 @@
                 </executions>
                 <configuration>
                     <nodeVersion>v10.15.2</nodeVersion>
-                    <workingDirectory>src/oblig-2</workingDirectory>
+                    <workingDirectory>src/kill me</workingDirectory>
                 </configuration>
 
             </plugin>
