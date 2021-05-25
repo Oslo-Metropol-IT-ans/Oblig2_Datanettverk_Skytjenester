@@ -70,6 +70,52 @@ The chatting room connects to the websocket. The room subscribes to the /topic/p
 For each time the user sends their message; it sends the room number to the websocket. 
 All users in the same room then fetches the messages from the API. 
 
+## Running
+___
+
+Running the program requires the dependencies in the pom.xml file. 
+Maven uses these files to run and build the program.
+
+The dependencies used in backend are:
+* Springboot (server)
+* Lombok (making constructors and getters and setters)
+* h2database (database)
+* bcrypt (hashing the password)
+
+The dependencies used in frontend are:
+* StompJS (connecting to the websocket)
+* SockJS-Client (connecting to websocket)
+* React-router-dom (redirecting)
+
+To build and run the project we are using maven to create a .jar.
+The command we are using is mvn clean install. Java runs the .jar with the command java -jar *.jar.
+You will need to have maven installed to do this.
+We have premade the .jar file. We have made the docker file to make an image, and in the start.sh script you can automatically buid the image and run a container based on that image
+
+
+## Outputs
+___
+
+#### Outputs from browsers
+![Frontpage](frontpage.png)
+![Register](registerpage.png)
+![Login](login.png)
+![Frontpage](main.png)
+![Roomregister](roomregister.png)
+![Frontpage](chatroom_1.png)
+![Frontpage](chatroom_2.png)
+![Frontpage](chatroom3.png)
+
+
+#### Outputs from console
+![Console](console_1.png)
+![Console](console_2.png)
+
+#### Outputs from API
+![Register user](registerAPI.png)
+![Rooms](roomsAPI.png)
+![Register user to room](roomuserAPI.png)
+
 ## Other stuff
 ___
 

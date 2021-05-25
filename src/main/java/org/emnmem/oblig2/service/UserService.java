@@ -19,7 +19,7 @@ public class UserService {
     UserRepository userRepository;
 
     public User addOne(UserDto user) {
-        String password = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt(4));
+        String password = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt(15));
         User setUser = new User();
         setUser.setUsername(user.getUsername());
         setUser.setPassword(password);
@@ -38,16 +38,6 @@ public class UserService {
         } catch (Exception e) {
             return null;
         }
-    }
-
-    public Optional<User> getByUsername(User user) {
-        return userRepository.findAll()
-            .stream()
-            .filter(user1 -> (user.getUsername().equals(user1.getUsername()) &&
-                        BCrypt.checkpw(user.getPassword(), user1.getPassword()))).findFirst();
-
-
-
     }
 
     public User deleteById(String id) {

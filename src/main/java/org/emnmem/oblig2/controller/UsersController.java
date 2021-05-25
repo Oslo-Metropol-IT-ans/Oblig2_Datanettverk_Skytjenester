@@ -14,9 +14,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 
-@CrossOrigin
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("api/users")
 public class UsersController {
 
     Logger logger = LoggerFactory.getLogger(UsersController.class);
@@ -27,19 +26,8 @@ public class UsersController {
     @PostMapping("/addOne")
     public ResponseEntity<User> addUser(@RequestBody UserDto user) {
         logger.info(user.toString());
-        if (user.getUsername().equals("") || user.getPassword().equals("")){
-            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
-        }
         User userResponse = userService.addOne(user);
         return new ResponseEntity<>(userResponse, HttpStatus.OK);
-    }
-
-    @PostMapping("/getByUser")
-    public ResponseEntity<User> getByUsername(@RequestBody User user) {
-        var userOut = userService.getByUsername(user);
-        return userOut.map(value -> new ResponseEntity<>(value, HttpStatus.OK)).orElseGet(()
-                -> new ResponseEntity<>(null, HttpStatus.BAD_REQUEST));
-
     }
 
     @GetMapping("/getAll")

@@ -1,14 +1,14 @@
 
 create table User(
     id int auto_increment not null,
-    username varchar(75) not null unique ,
+    username varchar(75) not null,
     password text not null,
     primary key (id)
 );
 
 create table Room(
     id int auto_increment not null primary key,
-    name varchar(75) not null unique
+    name varchar(75) not null
 );
 
 create table RoomUser(
@@ -27,8 +27,4 @@ create table Message(
     constraint messageRoomFK foreign key (room_id) references Room(id) on update cascade,
     constraint messageUserFK foreign key (user_id) references User(id) on update cascade
 );
-
-create view MessageView AS
-    select username, message.id, room_id, user_id, message from User, Message
-    where User.id = message.user_id;
 

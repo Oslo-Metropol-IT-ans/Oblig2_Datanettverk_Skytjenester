@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin
 @RestController
 @RequestMapping("/api/room/{room_id}/users")
 public class RoomUserController {
@@ -30,7 +29,7 @@ public class RoomUserController {
 
     @PostMapping
     public ResponseEntity<String> addUser(@PathVariable("room_id") String id, @RequestBody RoomUserDto userId) {
-        logger.info("room id: " + id + " added user_id: " + userId.getUserId());
+        logger.info("id: " + id + " user_id: " + userId.getUserId());
         return roomUserService.addOne(id, userId.getUserId()) ?
                 new ResponseEntity<>("User added to room", HttpStatus.OK) :
                 new ResponseEntity<>("User or room not found", HttpStatus.BAD_REQUEST);

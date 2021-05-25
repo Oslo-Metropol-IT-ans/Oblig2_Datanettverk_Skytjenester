@@ -42,10 +42,4 @@ public class MessageController {
         return new ResponseEntity<>(theMessage, HttpStatus.OK);
     }
 
-    @PostMapping("/update/{roomId}")
-    public ResponseEntity<List<MessageDto>> updateMessage (@RequestBody List<Message> listIn,
-                                                           @PathVariable("roomId") Integer roomId) throws InterruptedException {
-        return new ResponseEntity<>(messageService.messageDtosUpdate(listIn, roomId), HttpStatus.OK);
-    }
-
 }

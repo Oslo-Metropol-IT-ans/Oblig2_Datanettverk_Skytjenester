@@ -38,7 +38,7 @@ public class RoomUserService {
         for (RoomUser user : result) {
             if (String.valueOf(user.getRoomUserId().getRoom_id()).equals(id)) {
                 try {
-                    Optional<User> add = userRepository.findById(user.getRoomUserId().getUser_id());
+                    Optional<User> add = userRepository.findById(Integer.parseInt(id));
                     add.ifPresent(userList::add);
                 } catch (Exception ignored) {}
 
